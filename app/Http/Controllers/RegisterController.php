@@ -15,15 +15,14 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request, $roleName) {
 
-        $role = Role::getRole($roleName);
-        dd(Role::find(1));
+        $role = Role::fetchRole($roleName);
         $attributes = $request->validated();
-
-        $attributes = array_merge($attributes, [
-            'role_id' => $role->id
-        ]);
-
-        User::create($attributes);
+        $role->users()->create($attributes);
+//        $attributes = array_merge($attributes, [
+//            'role_id' => $role->id
+//        ]);
+//
+//        User::create($attributes);
 
         return redirect()->route('home');
     }

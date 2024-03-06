@@ -13,7 +13,7 @@ class Role extends Model
         'name'
     ];
 
-    public static function getRole($name) {
+    public static function fetchRole($name) {
         return self::where('name', $name)->first();
     }
 
