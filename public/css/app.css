@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Porcine';
+    src: url('http://localhost/fonts/Porcine-Heavy.eot');
+    src: local('Porcine Heavy'), local('Porcine-Heavy'),
+    url('http://localhost/fonts/Porcine-Heavy.eot?#iefix') format('embedded-opentype'),
+    url('http://localhost/fonts/Porcine-Heavy.woff2') format('woff2'),
+    url('http://localhost/fonts/Porcine-Heavy.woff') format('woff'),
+    url('http://localhost/fonts/Porcine-Heavy.ttf') format('truetype'),
+    url('http://localhost/fonts/Porcine-Heavy.svg#Porcine-Heavy') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PunkEvent';
+    src: local('Porcine Heavy'), local('Porcine-Heavy'),
+    url('http://localhost/fonts/PunkEvent.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+* {
+    font-family: "Graduate", serif;
+}
+
+@keyframes selection {
+    0% { transform: rotate(-30deg) }
+    50% { transform: rotate(30deg) }
+    100% { transform: rotate(-30deg) }
+}
+
+.register-card:hover {
+    animation: selection 900ms infinite;
+    animation-timing-function: steps(1, end);
+}
