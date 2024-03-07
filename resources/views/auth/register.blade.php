@@ -21,18 +21,13 @@
         <!-- CLIENT FORM -->
         <x-form.layout role="client">
 
-            <x-form.input name="name"/>
-            <x-form.input name="email" type="email"/>
-            <x-form.input name="password" type="password"/>
-            <x-form.image-input name="image"/>
+            @include('auth._default-inputs')
         </x-form.layout>
 
         <!-- ORGANIZER FORM -->
         <x-form.layout role="organizer">
 
-            <x-form.input name="name"/>
-            <x-form.input name="email" type="email"/>
-            <x-form.input name="password" type="password"/>
+            @include('auth._default-inputs')
         </x-form.layout>
 
         <div id="overlay" class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] h-full w-full bg-black opacity-[0] z-[-50] transition-all "></div>

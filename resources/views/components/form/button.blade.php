@@ -1,1 +1,1 @@
-<button type="submit" class="mt-8 py-2 px-4 font-black text-lg border-2 bg-main text-white border-main transition-all hover:bg-white hover:border-main hover:text-main col-span-3 rounded-lg">SUBMIT</button>
+<button type="submit" class="w-full mt-8 py-2 px-4 font-black text-lg border-2 bg-main text-white border-main transition-all hover:bg-white hover:border-main hover:text-main col-span-3 rounded-lg">SUBMIT</button>

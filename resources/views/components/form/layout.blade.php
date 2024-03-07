@@ -4,7 +4,7 @@
     @csrf
 
     <h1 class="mb-4 text-center p-4 w-full bg-main rounded-t-lg text-3xl font-black text-white">{{ strtoupper($role) }} SIGN-UP</h1>
-    <div class="p-10 grid grid-cols-2 items-start items-center justify-center gap-y-8 gap-x-20">
+    <div class="px-10 py-16 flex flex-col items-start items-center justify-center gap-y-8 gap-x-20">
 
         {{ $slot }}
 
