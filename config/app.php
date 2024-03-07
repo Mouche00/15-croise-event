@@ -184,6 +184,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'RoleHelper' => App\Helpers\RoleHelper::class,
+        'FlashHelper' => App\Helpers\FlashHelper::class,
     ])->toArray(),
 
 ];

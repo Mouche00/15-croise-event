@@ -29,8 +29,12 @@ Route::middleware('guest')->group(function() {
     Route::get('/login', [SessionController::class, 'index'])->name('login');
     Route::post('/login', [SessionController::class, 'store'])->name('login.store');
 
-    Route::get('/forgot-password', [PasswordController::class, 'index'])->name('auth.password.request');
-    Route::get('/reset-password/{token}', [PasswordController::class, 'store'])->name('auth.password.reset');
+    Route::get('/forgot-password', [PasswordController::class, 'index'])->name('password.index');
+    Route::post('/forgot-password', [PasswordController::class, 'store'])->name('password.store');
+
+    Route::get('/reset-password/{token}', [PasswordController::class, 'edit'])->name('password.edit');
+    Route::post('/reset-password', [PasswordController::class, 'update'])->name('password.update');
+
 });
 
 Route::middleware('auth')->group(function() {
