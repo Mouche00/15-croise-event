@@ -26,6 +26,7 @@ class EventRequest extends FormRequest
             'description' => 'required|min:4',
             'places' => 'required|numeric|min:1',
             'price' => 'required|numeric|min:1',
+            'date' => 'required|date|before:' . now()->timezone('Africa/Casablanca')->addYears(2)->toDateTimeString() . '|after:' . now()->timezone('Africa/Casablanca')->toDateTimeString(),
             'category_id' => 'required|numeric',
             'image' => 'required|image'
         ];

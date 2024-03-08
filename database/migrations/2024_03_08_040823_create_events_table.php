@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('places');
             $table->float('price');
-            $table->enum('auto', [0, 1])->default(1);
+            $table->dateTime('date');
+            $table->boolean('auto')->default(true);
             $table->timestamp('validated_at')->nullable();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('organizer_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();

@@ -71,6 +71,13 @@ Route::middleware('can:organizer')->group(function() {
     Route::get('/organizer/events', [OrganizerController::class, 'events'])->name('organizer.events');
     Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
 
+    Route::get('/event/{event}/edit', [OrganizerController::class, 'edit'])->name('event.edit');
+    Route::put('/event/{event}/update', [EventController::class, 'update'])->name('event.update');
+
+    Route::put('/event/{event}/change-status', [EventController::class, 'changeStatus'])->name('event.change-status');
+
+    Route::delete('/event/{event}/delete', [EventController::class, 'destroy'])->name('event.delete');
+
     Route::get('/organizer/reservations', [OrganizerController::class, 'reservations'])->name('organizer.reservations');
 //    Route::put('/category/{category}/update', [CategoryController::class, 'update'])->name('category.update');
 //    Route::delete('/category/{category}/delete', [CategoryController::class, 'destroy'])->name('category.delete');
