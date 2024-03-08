@@ -1,7 +1,7 @@
 <div class="bg-white w-full h-32 flex flex-col relative">
     <div class="z-[10] bg-[url('{{ asset('images/navbar-background.png') }}')] bg-repeat bg-center flex flex items-center justify-between px-16 pt-4">
         <div class="w-[15%] order-1">
-            <img src="{{ asset('images/logo.png') }}" alt="" class="w-[25rem] absolute top-[0%] z-[10]">
+            <img src="{{ asset('images/logo-2.png') }}" alt="" class="w-[25rem] absolute top-[0%] z-[10]">
         </div>
 
 

@@ -2,7 +2,7 @@
 
 <form action="{{ $route ?? route('register.store', $role) }}" method="POST" id="{{ $role }}-form" {{ $attributes->merge(['class' => 'absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-white rounded-lg opacity-[0] z-[-50] transition-all']) }} enctype="multipart/form-data">
     @csrf
-    @if($type == 'PUT')
+    @if(isset($type) && $type == 'PUT')
         @method('PUT')
     @endif
 
