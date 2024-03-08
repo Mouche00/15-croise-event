@@ -6,7 +6,7 @@ use App\Helpers\RoleHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Session;
-use Nette\Schema\ValidationException;
+use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {

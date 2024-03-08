@@ -185,6 +185,7 @@ return [
         // 'Example' => App\Facades\Example::class,
         'RoleHelper' => App\Helpers\RoleHelper::class,
         'FlashHelper' => App\Helpers\FlashHelper::class,
+        'ImageHelper' => App\Helpers\ImageHelper::class,
     ])->toArray(),
 
 ];

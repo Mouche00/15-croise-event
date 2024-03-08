@@ -1,26 +1,41 @@
-@font-face {
-    font-family: 'Porcine';
-    src: url('http://localhost/fonts/Porcine-Heavy.eot');
-    src: local('Porcine Heavy'), local('Porcine-Heavy'),
-    url('http://localhost/fonts/Porcine-Heavy.eot?#iefix') format('embedded-opentype'),
-    url('http://localhost/fonts/Porcine-Heavy.woff2') format('woff2'),
-    url('http://localhost/fonts/Porcine-Heavy.woff') format('woff'),
-    url('http://localhost/fonts/Porcine-Heavy.ttf') format('truetype'),
-    url('http://localhost/fonts/Porcine-Heavy.svg#Porcine-Heavy') format('svg');
-    font-weight: 900;
-    font-style: normal;
-}
+/*@font-face {*/
+/*    font-family: 'Porcine';*/
+/*    src: url('http://localhost/fonts/Porcine-Heavy.eot');*/
+/*    src: local('Porcine Heavy'), local('Porcine-Heavy'),*/
+/*    url('http://localhost/fonts/Porcine-Heavy.eot?#iefix') format('embedded-opentype'),*/
+/*    url('http://localhost/fonts/Porcine-Heavy.woff2') format('woff2'),*/
+/*    url('http://localhost/fonts/Porcine-Heavy.woff') format('woff'),*/
+/*    url('http://localhost/fonts/Porcine-Heavy.ttf') format('truetype'),*/
+/*    url('http://localhost/fonts/Porcine-Heavy.svg#Porcine-Heavy') format('svg');*/
+/*    font-weight: 900;*/
+/*    font-style: normal;*/
+/*}*/
 
 @font-face {
     font-family: 'PunkEvent';
-    src: local('Porcine Heavy'), local('Porcine-Heavy'),
-    url('http://localhost/fonts/PunkEvent.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
+    src: url('http://localhost/fonts/PunkEvent.ttf') format('truetype');
 }
 
-* {
-    font-family: "Graduate", serif;
+@font-face {
+    font-family: 'Goma Block';
+    src: url('http://localhost/fonts/GomaBlock-V1Bx.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: '101BlockLetterz';
+    src: url('http://localhost/fonts/101BlockLetterz-XZYK.ttf') format('truetype');
+}
+
+:root {
+    font-family: "Graduate", sans-serif;
+}
+
+.register-card  {
+    font-family: "101BlockLetterz", serif !important;
+}
+
+.dashboard {
+    font-family: "Rubik Mono One", monospace;
 }
 
 @keyframes selection {

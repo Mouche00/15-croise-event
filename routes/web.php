@@ -4,6 +4,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\OrganizerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,5 +49,34 @@ Route::middleware('auth')->group(function() {
 Route::middleware('can:admin')->group(function() {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/overview', [AdminController::class, 'index'])->name('admin.overview');
+
+    Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::put('/category/{category}/update', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/category/{category}/delete', [CategoryController::class, 'destroy'])->name('category.delete');
+
+    Route::get('/admin/events', [AdminController::class, 'events'])->name('admin.events');
+    Route::put('/event/{event}/approve', [EventController::class, 'approve'])->name('event.approve');
+    Route::delete('/event/{event}/reject', [EventController::class, 'destroy'])->middleware('can:admin')->name('event.reject');
+
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
 });
+
+Route::middleware('can:organizer')->group(function() {
+
+    Route::get('/organizer', [OrganizerController::class, 'index'])->name('organizer');
+    Route::get('/organizer/overview', [OrganizerController::class, 'index'])->name('organizer.overview');
+
+    Route::get('/organizer/events', [OrganizerController::class, 'events'])->name('organizer.events');
+    Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
+
+    Route::get('/organizer/reservations', [OrganizerController::class, 'reservations'])->name('organizer.reservations');
+//    Route::put('/category/{category}/update', [CategoryController::class, 'update'])->name('category.update');
+//    Route::delete('/category/{category}/delete', [CategoryController::class, 'destroy'])->name('category.delete');
+//
+//    Route::get('/admin/events', [AdminController::class, 'events'])->name('admin.events');
+//    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+});
+
 

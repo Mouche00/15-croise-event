@@ -15,4 +15,9 @@ class RoleHelper {
 
         return $user->role()->first()->name;
     }
+
+    public static function getUser() {
+
+        return auth()->user();
+    }
 }
