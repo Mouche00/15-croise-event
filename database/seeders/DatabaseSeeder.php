@@ -21,18 +21,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $roleNames = ['admin', 'organizer', 'client'];
-
-        foreach($roleNames as $roleName) {
-
-            $role = Role::create([
-                'name' => $roleName
-            ]);
-
-            User::factory()->create([
-                'email' => $role->name . '@example.net',
-                'role_id' => $role->id
-            ]);
-        }
+        $this->call([
+            RoleSeeder::class,
+            EventSeeder::class,
+        ]);
     }
 }

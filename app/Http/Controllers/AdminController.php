@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function events() {
 
-        $events = Event::whereNull('validated_at')->get();
+        $events = Event::withTrashed()->with('organizer', 'category')->latest()->get();
         return view('admin.events', array_merge($this->scaffold(), compact('events')));
     }
 }

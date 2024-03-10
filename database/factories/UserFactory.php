@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -26,8 +27,10 @@ class UserFactory extends Factory
         return [
             'name' => fake()->firstName(),
             'email' => fake()->unique()->safeEmail(),
+            'image' => 'uploads/default.jpg',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'role_id' => 2,
             'remember_token' => Str::random(10),
         ];
     }

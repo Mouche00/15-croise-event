@@ -16,11 +16,13 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('image')->nullable();
-            $table->string('places');
+            $table->string('venue');
+            $table->integer('seats');
             $table->float('price');
             $table->dateTime('date');
             $table->boolean('auto')->default(true);
             $table->timestamp('validated_at')->nullable();
+            $table->softDeletes()->nullable();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('organizer_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

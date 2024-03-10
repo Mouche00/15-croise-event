@@ -62,7 +62,7 @@
     <x-form.layout role="event" :route="isset($edit) ? route('event.update', $selectedEvent->id) : route('event.store')" type="{{ isset($edit) ? 'PUT' : '' }}" class="{{ isset($edit) ? 'z-[50] opacity-[1]' : '' }}">
 
         <x-form.input value="{{ $selectedEvent->title ?? '' }}" name="title"/>
-        <x-form.input value="{{ $selectedEvent->places ?? '' }}" name="places" type="number"/>
+        <x-form.input value="{{ $selectedEvent->places ?? '' }}" name="seats" type="number"/>
         <x-form.input value="{{ $selectedEvent->price ?? '' }}" name="price" type="number"  step="0.01"/>
         <x-form.input value="{{ $selectedEvent->date ?? '' }}" name="date" type="datetime-local" min="{{ now()->timezone('Africa/Casablanca')->format('Y-m-d\TH:i') }}" max="{{ now()->timezone('Africa/Casablanca')->addMonths(24)->format('Y-m-d\TH:i') }}"/>
 

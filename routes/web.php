@@ -57,7 +57,7 @@ Route::middleware('can:admin')->group(function() {
 
     Route::get('/admin/events', [AdminController::class, 'events'])->name('admin.events');
     Route::put('/event/{event}/approve', [EventController::class, 'approve'])->name('event.approve');
-    Route::delete('/event/{event}/reject', [EventController::class, 'destroy'])->middleware('can:admin')->name('event.reject');
+    Route::delete('/event/{event}/reject', [EventController::class, 'reject'])->middleware('can:admin')->name('event.reject');
 
     Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
 });

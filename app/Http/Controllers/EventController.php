@@ -38,10 +38,11 @@ class EventController extends Controller
         $attributes = $request->validate([
             'title' => ['required', Rule::unique('events', 'title')->ignore($event)],
             'description' => 'required|min:4',
-            'places' => 'required|numeric|integer|min:1',
+            'venue' => 'required|min:4',
+            'seats' => 'required|numeric|integer|min:1',
             'price' => 'required|numeric|min:1',
             'date' => 'required|date|before:' . now()->timezone('Africa/Casablanca')->addYears(2)->toDateTimeString() . '|after:' . now()->timezone('Africa/Casablanca')->toDateTimeString(),
-            'category_id' => 'required|numeric',
+            'category_id' => 'required|numeric|exists:categories,id',
             'image' => 'image'
         ]);
 
@@ -67,8 +68,10 @@ class EventController extends Controller
         return FlashHelper::redirect('organizer.events', 'success', 'Event updated successfully');
     }
 
-    public function approve(Event $event) {
+    public function approve($eventID) {
 
+        $event = Event::fetch($eventID);
+        $event->restore();
         $event->update([
             'validated_at' => now()
         ]);
@@ -76,9 +79,19 @@ class EventController extends Controller
         return FlashHelper::redirect('back', 'success', 'Event approved successfully');
     }
 
+    public function reject(Event $event) {
+
+        $event->update([
+            'validated_at' => NULL
+        ]);
+        $event->delete();
+
+        return FlashHelper::redirect('back', 'success', 'Event rejected successfully');
+    }
+
     public function destroy(Event $event) {
 
-        $event->delete();
+        $event->forceDelete();
 
         return FlashHelper::redirect('back', 'success', 'Event deleted successfully');
     }
