@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ClientController::class, 'index'])->name('home');
+Route::get('/category/{category}', [ClientController::class, 'category'])->name('category.events');
 Route::get('/events', [ClientController::class, 'index'])->name('events');
 Route::get('/contact', [ClientController::class, 'index'])->name('contact');
 
@@ -101,6 +102,7 @@ Route::middleware('can:client')->group(function() {
 
     Route::post('/reservation/{event}/store', [ReservationController::class, 'store'])->name('reservation.store');
     Route::get('/ticket/{reservation}', [ReservationController::class, 'ticket'])->name('reservation.ticket');
+    Route::get('/client', [ClientController::class, 'reservations'])->name('client.reservations');
 });
 
 

@@ -19,7 +19,18 @@ class OrganizerController extends Controller
 
     public function index() {
 
-        return view('organizer.index', $this->scaffold());
+        $events = auth()->user()->events()->get();
+        $count = 0;
+
+        foreach($events as $event){
+            $count += $event->reservations()->count();
+        }
+        $reservations = $count;
+        $events = auth()->user()->events()->count();
+        return view('organizer.index', array_merge($this->scaffold(),
+            compact('reservations'),
+            compact('events'),
+        ));
     }
 
     public function events() {

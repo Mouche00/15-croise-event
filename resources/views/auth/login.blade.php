@@ -12,7 +12,7 @@
         </div>
         <main class="h-[80vh] p-16 flex items-center justify-center gap-16">
             <h1 class="h-fit text-5xl font-extrabold text-black w-fit tex-center py-4 px-8 bg-white">Login</h1>
-            <form action="{{ route('login.store') }}" method="POST" id="login-form" class="bg-white rounded-lg p-8 space-y-8 transition-all">
+            <form action="{{ route('login.store') }}" method="POST" id="login-form" class="bg-white rounded-lg p-8 space-y-8 transition-all p-8">
                 @csrf
 
                 <x-form.input name="email" type="email"/>
@@ -20,6 +20,8 @@
 
                 <x-form.button />
             </form>
+
+            <a href="{{ route('password.index') }}" class="px-4 py-2 bg-black text-white rounded">Forget Password?</a>
         </main>
     </div>
 </x-layout>

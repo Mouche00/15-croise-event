@@ -15,8 +15,20 @@
         <img src="{{ asset('images/border.png') }}" alt="" class="absolute top-0 translate-y-[-80%] w-full z-[10]">
 
         <section class="flex flex-col items-center p-12 gap-4">
+            <section class="m-4 flex flex-col items-center space-y-4">
+                <h1>Filter by category</h1>
+
+                <div class="grid grid-cols-3 gap-4">
+                    @foreach($categories as $category)
+                        <a href="{{ route('category.events', $category->id) }}" class="p-4 border-black border-2 bg-white rounded-lg">
+                            {{ $category->name }}
+                        </a>
+                    @endforeach
+                </div>
+
+            </section>
             @if($events->first())
-                <h1>Available events</h1>
+                <h1 class="mt-8">Available events</h1>
 
                 <div class="grid grid-cols-3 items-start gap-8">
                     @if($events->first())
