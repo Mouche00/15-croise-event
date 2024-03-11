@@ -11,7 +11,7 @@ class OrganizerController extends Controller
 {
     public function scaffold() {
         return [
-            'links' => serialize(['overview', 'events', 'reservations']),
+            'links' => serialize(['overview', 'events']),
             'role' => RoleHelper::getAuthRole()
         ];
 
@@ -24,7 +24,7 @@ class OrganizerController extends Controller
 
     public function events() {
 
-        $events = auth()->user()->events()->get();
+        $events = auth()->user()->events()->withTrashed()->orderBy('updated_at', 'desc')->paginate(5);
         $categories = Category::all();
         return view('organizer.events', array_merge($this->scaffold(), compact('events'), compact('categories')));
     }

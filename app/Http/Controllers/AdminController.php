@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function events() {
 
-        $events = Event::withTrashed()->with('organizer', 'category')->latest()->get();
+        $events = Event::withTrashed()->with('organizer', 'category')->orderBy('updated_at', 'desc')->paginate(5);
         return view('admin.events', array_merge($this->scaffold(), compact('events')));
     }
 }

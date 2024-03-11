@@ -21,7 +21,7 @@ class EventFactory extends Factory
         return [
             'title' => $this->faker->word,
             'description' => $this->faker->sentence,
-            'image' => 'uploads/default.jpg',
+            'image' => 'storage/uploads/default.jpg',
             'venue' => $this->faker->address,
             'seats' => $this->faker->numberBetween(1, 1000),
             'price' => $this->faker->numberBetween(1, 1000),

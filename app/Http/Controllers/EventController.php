@@ -21,7 +21,7 @@ class EventController extends Controller
         $user = RoleHelper::getUser();
         $user->events()->create($attributes);
 
-        return FlashHelper::redirect('back', 'success', 'Event added successfully');
+        return FlashHelper::redirect('organizer.events', 'success', 'Event added successfully');
     }
 
     public function edit(Event $event) {
@@ -93,6 +93,6 @@ class EventController extends Controller
 
         $event->forceDelete();
 
-        return FlashHelper::redirect('back', 'success', 'Event deleted successfully');
+        return FlashHelper::redirect('organizer.events', 'success', 'Event deleted successfully');
     }
 }

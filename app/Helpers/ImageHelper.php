@@ -7,6 +7,10 @@ class ImageHelper {
 
     public static function store($array)
     {
-        return $array['image']->store('uploads');
+
+        $file = $array['image'];
+        $filename= 'storage/uploads/' . date('YmdHi').$file->getClientOriginalName();
+        $file->move(public_path('storage/uploads'), $filename);
+        return $filename;
     }
 }

@@ -1,5 +1,3 @@
-@dd($events)
-
 <x-layout class="h-[100vh]">
     <x-navbar />
 

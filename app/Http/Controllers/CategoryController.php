@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function index() {
 
-        $categories = Category::all();
+        $categories = Category::orderBy('updated_at', 'desc')->paginate(7);
         return view('admin.categories', array_merge($this->scaffold(), compact('categories')));
     }
 

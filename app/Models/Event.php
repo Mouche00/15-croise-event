@@ -20,8 +20,22 @@ class Event extends Model
         return $this->belongsTo(User::class, 'organizer_id');
     }
 
+    public function reservations() {
+        return $this->belongsTo(Reservation::class);
+    }
+
     public static function fetch($id) {
 
         return self::withTrashed()->findOrFail($id);
+    }
+
+    public function seatNumber() {
+
+        return $this->reservations()->whereNotNull('validated_at')->count() + 1;
+    }
+
+    public function remainingSeats() {
+
+        return $this->seats - ($this->seatNumber() - 1);
     }
 }
