@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrganizerController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ClientController::class, 'index'])->name('home');
+Route::get('/events', [ClientController::class, 'index'])->name('events');
+Route::get('/contact', [ClientController::class, 'index'])->name('contact');
+
+Route::get('/event/{event}', [EventController::class, 'show'])->name('event.show');
 
 Route::middleware('guest')->group(function() {
 
@@ -60,6 +66,9 @@ Route::middleware('can:admin')->group(function() {
     Route::delete('/event/{event}/reject', [EventController::class, 'reject'])->middleware('can:admin')->name('event.reject');
 
     Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+
+    Route::delete('/user/{user}/ban', [UserController::class, 'ban'])->name('user.ban');
+    Route::put('/user/{user}/unban', [UserController::class, 'unban'])->name('user.unban');
 });
 
 Route::middleware('can:organizer')->group(function() {
@@ -77,12 +86,21 @@ Route::middleware('can:organizer')->group(function() {
 
     Route::delete('/event/{event}/delete', [EventController::class, 'destroy'])->name('event.delete');
 
-    Route::get('/event/{event}/reservations', [EventController::class, 'reservations'])->name('event.reservations');
+    Route::get('/event/{event}/reservations', [OrganizerController::class, 'reservations'])->name('event.reservations');
+
+    Route::put('/reservation/{reservation}/approve', [ReservationController::class, 'approve'])->name('reservation.approve');
+    Route::delete('/reservation/{reservation}/reject', [ReservationController::class, 'reject'])->name('reservation.reject');
 //    Route::put('/category/{category}/update', [CategoryController::class, 'update'])->name('category.update');
 //    Route::delete('/category/{category}/delete', [CategoryController::class, 'destroy'])->name('category.delete');
 //
 //    Route::get('/admin/events', [AdminController::class, 'events'])->name('admin.events');
 //    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+});
+
+Route::middleware('can:client')->group(function() {
+
+    Route::post('/reservation/{event}/store', [ReservationController::class, 'store'])->name('reservation.store');
+    Route::get('/ticket/{reservation}', [ReservationController::class, 'ticket'])->name('reservation.ticket');
 });
 
 

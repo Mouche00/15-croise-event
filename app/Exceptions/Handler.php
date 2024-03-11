@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Helpers\FlashHelper;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -26,5 +28,18 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if($e instanceof AuthorizationException) {
+            return FlashHelper::redirect('login', 'error', 'Action is unauthorized');
+        }
+//        if ($this->isHttpException($e) && $e->getStatusCode() === 500)
+//        {
+//            return redirect()->route('home');
+//        }
+
+        return parent::render($request, $e);
     }
 }

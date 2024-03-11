@@ -26,6 +26,7 @@ class EventFactory extends Factory
             'seats' => $this->faker->numberBetween(1, 1000),
             'price' => $this->faker->numberBetween(1, 1000),
             'date' => $this->faker->dateTime(now()->addYear(), 'Africa/Casablanca'),
+            'validated_at' => now(),
             'organizer_id' => User::factory()->create(),
             'category_id' => Category::factory()->create()
         ];

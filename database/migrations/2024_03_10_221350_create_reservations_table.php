@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('seat');
             $table->timestamp('validated_at')->nullable();
             $table->softDeletes()->nullable();
-            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('client_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('event_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });

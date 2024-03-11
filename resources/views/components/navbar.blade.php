@@ -13,7 +13,7 @@
 
         <!-- AUTH/PROFILE -->
         @php
-            $items = serialize(['login', 'register']);
+            $items = auth()->user() ? serialize(['dashboard', 'logout']) : serialize(['login', 'register'])
         @endphp
         <x-navbar.list :items="$items" class="justify-center order-2 w-[30%]"/>
     </div>

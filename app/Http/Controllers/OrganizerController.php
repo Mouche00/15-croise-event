@@ -38,4 +38,11 @@ class OrganizerController extends Controller
             'selectedEvent' => $event
         ]));
     }
+
+    public function reservations(Event $event) {
+
+
+        $reservations = $event->reservations()->latest()->with('client')->orderBy('updated_at', 'desc')->withTrashed()->paginate(5);
+        return view('organizer.reservations', array_merge($this->scaffold(), compact('reservations'), compact('event')));
+    }
 }

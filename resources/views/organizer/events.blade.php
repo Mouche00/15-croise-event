@@ -53,11 +53,11 @@
 
                             <div class="flex items-center">
                                 <img src="{{ asset('images/selection.gif') }}" alt="" class="w-8">
-                                <p class="text-white">{{$event->auto ? 'MANUAL' : 'AUTO'}}</p>
+                                <p class="text-white">{{$event->auto ? 'AUTO' : 'MANUAL'}}</p>
                             </div>
                             <button type="submit" class="flex items-center">
                                 <div class="w-8"></div>
-                                <p class="rounded-full text-neutral-400">{{$event->auto ? 'AUTO' : 'MANUAL'}}</p>
+                                <p class="rounded-full text-neutral-400">{{$event->auto ? 'MANUAL' : 'AUTO'}}</p>
                             </button>
 
                         </form>

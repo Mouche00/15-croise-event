@@ -20,7 +20,7 @@ class SessionController extends Controller
 
         if( ! auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
-                'email' => 'Tour credentials could not be verified'
+                'email' => 'Your credentials could not be verified'
             ]);
         }
 

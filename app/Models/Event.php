@@ -21,7 +21,7 @@ class Event extends Model
     }
 
     public function reservations() {
-        return $this->belongsTo(Reservation::class);
+        return $this->hasMany(Reservation::class);
     }
 
     public static function fetch($id) {
@@ -37,5 +37,19 @@ class Event extends Model
     public function remainingSeats() {
 
         return $this->seats - ($this->seatNumber() - 1);
+    }
+
+    public function delete()
+    {
+        $this->reservations()->delete();
+
+        return parent::delete();
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['query'] ?? false,
+            fn($query, $search) => $query->where('title', 'like', '%' . $search . '%')
+        );
     }
 }

@@ -55,4 +55,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class, 'organizer_id');
     }
+
+    public function reservations() {
+
+        return $this->hasMany(Event::class, 'client_id');
+
+    }
+
+    public function delete()
+    {
+        if ($this->role()->first()->name == 'organizer') {
+            $this->events()->forceDelete();
+        } else {
+            $this->reservations()->delete();
+        }
+
+        return parent::delete();
+    }
 }

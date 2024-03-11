@@ -12,6 +12,11 @@ use Illuminate\Validation\Rule;
 
 class EventController extends Controller
 {
+
+    public function show(Event $event) {
+
+        return view('event', compact('event'));
+    }
     public function store(EventRequest $request) {
 
         $attributes = array_merge($request->validated(), [
@@ -95,4 +100,5 @@ class EventController extends Controller
 
         return FlashHelper::redirect('organizer.events', 'success', 'Event deleted successfully');
     }
+
 }

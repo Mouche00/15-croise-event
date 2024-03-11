@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reservation extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
@@ -16,8 +17,13 @@ class Reservation extends Model
         return $this->belongsTo(Event::class);
     }
 
-    public function user() {
+    public function client() {
 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'client_id');
+    }
+
+    public static function fetch($id) {
+
+        return self::withTrashed()->findOrFail($id);
     }
 }
